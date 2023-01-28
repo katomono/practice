@@ -1,7 +1,4 @@
-function repository_list() {
-    Main();
-}
-function Main() {
+function main() {
     $(window).resize(function () {
         $("#CardList").tabulator("redraw");
     });
@@ -22,14 +19,33 @@ function Main() {
         }).slice(1, 20))
 
     });
+
+
 }
 
+$.get("https://www.db.yugioh-card.com/yugiohdb/member_deck.action?ope=1&cgid=47d27d3bf59d0cfe3945a4f7cf5ede94&dno=1&request_locale=ja", function(html) { 
+	console.log(html); 
+});
 
-
-
-
-
-
+let nameText = document.getElementById('deckURL')
+nameText.value = 'https://www.db.yugioh-card.com/yugiohdb/member_deck.action?ope=1&cgid=47d27d3bf59d0cfe3945a4f7cf5ede94&dno=1&request_locale=ja'
+let checkButton = document.getElementById('checkButton')
+$(document).ready(function () {
+    $("#checkButton").click(function () {
+        console.log("data")
+        console.log(nameText.value)
+        $.ajax({
+            type: "GET",
+            url: nameText.value,
+            dataType: "text"
+        }).done(function (res) {
+            // Your `success` code
+            console.log("aaa")
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            alert("AJAX call failed: " + textStatus + ", " + errorThrown);
+        });
+    });
+});
 
 
 function plotSmallWorld(data) {
