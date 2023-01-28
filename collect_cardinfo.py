@@ -158,7 +158,7 @@ def main():
         for cid in range(0, 20000):
             card = YugiohCardAPI.get(cid)
             cfg = card.asdict()
-            time.sleep(10)
+            time.sleep(0.1)
 
             # カード情報が無い（IDにマッチするカードが存在しない）
             if all(x == "" for x in cfg.values()):
