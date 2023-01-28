@@ -14,6 +14,8 @@ on:
       - main
     paths:
       - 'collect_cardinfo.py'
+permissions:
+  contents: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
