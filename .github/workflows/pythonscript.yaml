@@ -12,6 +12,8 @@ on:
   push:
     branches: 
       - main
+    paths:
+      - 'collect_cardinfo.py'
 jobs:
   deploy:
     runs-on: ubuntu-latest

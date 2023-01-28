@@ -154,12 +154,11 @@ def main():
     data_dir = Path("data")
     if not data_dir.exists():
         data_dir.mkdir()
-    with (data_dir / "yugioh_card_db.tsv").open("w") as pw:
-        for cid in range(0, 20000):
+    with (data_dir / "yugioh_card_db.tsv").open("w", encoding="utf-8") as pw:
+        for cid in range(6000, 20000):
             card = YugiohCardAPI.get(cid)
             cfg = card.asdict()
-            time.sleep(0.1)
-
+            time.sleep(0.3)
             # カード情報が無い（IDにマッチするカードが存在しない）
             if all(x == "" for x in cfg.values()):
                 print(f"skip! {cid}")
@@ -168,8 +167,7 @@ def main():
             if is_first:
                 pw.write("\t".join(map(as_string, ["cid"] + list(cfg.keys()))) + "\n")
                 is_first = False
-            pw.write("\t".join(map(as_string, [cid], list(cfg.keys()))) + "\n")
+            pw.write("\t".join(map(as_string, [cid] + list(cfg.values()))) + "\n")
 
 if __name__ == "__main__":
     main()
-
