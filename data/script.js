@@ -7,7 +7,7 @@ function Main() {
     });
 
     baseTime = new Date();
-    var tsvUrl = "data/yugioh_card_db.tsv"
+    var tsvUrl = "yugioh_card_db.tsv"
 
     d3.tsv(tsvUrl, function (error, data) {
         $("#CardList").tabulator({
