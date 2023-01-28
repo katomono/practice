@@ -155,7 +155,7 @@ def main():
     if not data_dir.exists():
         data_dir.mkdir()
     with (data_dir / "yugioh_card_db.tsv").open("w", encoding="utf-8") as pw:
-        for cid in range(6000, 20000):
+        for cid in range(6000, 60100):
             card = YugiohCardAPI.get(cid)
             cfg = card.asdict()
             time.sleep(0.3)
