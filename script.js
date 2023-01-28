@@ -3,19 +3,19 @@ function repository_list() {
 }
 function Main() {
     $(window).resize(function () {
-        $("#RepositoryList").tabulator("redraw");
+        $("#CardList").tabulator("redraw");
     });
 
     baseTime = new Date();
-    var tsvUrl = "sample.tsv"
+    var tsvUrl = "data/yugioh_card_db.tsv"
 
     d3.tsv(tsvUrl, function (error, data) {
-        $("#RepositoryList").tabulator({
+        $("#CardList").tabulator({
             //height:"320px",
             fitColumns: true,
             columns: getColumns(data)
         });
-        $("#RepositoryList").tabulator("setData", data);
+        $("#CardList").tabulator("setData", data);
 
         plotSmallWorld(data.filter(function (card) {
             return card["分類"] == "効果";
@@ -23,6 +23,14 @@ function Main() {
 
     });
 }
+
+
+
+
+
+
+
+
 
 function plotSmallWorld(data) {
 
@@ -127,7 +135,7 @@ function plotSmallWorld(data) {
 
     var data = [trace]
 
-    Plotly.newPlot('myDiv', data, layout);
+    Plotly.newPlot('SmallWorld', data, layout);
 }
 
 function unpack(rows, key) {
