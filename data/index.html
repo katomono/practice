@@ -19,12 +19,12 @@
         $(document).ready(function () {
             $.getJSON("https://www.db.yugioh-card.com/yugiohdb/member_deck.action?ope=1&cgid=47d27d3bf59d0cfe3945a4f7cf5ede94&dno=1&request_locale=ja",
                 function (data) {
-    
                     //Iterate through the <li> inside of the URL's data
                     $.each(data.items, function (item) {
                         $("<li/>").value().appendTo("#data");
                     });
-                });
+                }
+            );
         });
     </script>
 </head>

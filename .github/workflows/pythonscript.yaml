@@ -7,7 +7,7 @@ name: Python application
 on:
   # 定期的な実行
   schedule:
-    - cron:  '0 4 */3 * *'
+    - cron:  '0 4 1 * *'
   # push(ソースコードなどの変更)
   push:
     branches: 
